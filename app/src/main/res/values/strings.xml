@@ -23,5 +23,8 @@
     <string name="proceed">Devam</string>
     <string name="comments">Yorumlar</string>
     <string name="add_comment">Yorum ekle...</string>
+    <string name="save_photo">Fotoğrafı Kaydet</string>
+    <string name="hide_posts">Gönderilerini Gizle</string>
+    <string name="user_report">Şikayet Et</string>
 
 </resources>
