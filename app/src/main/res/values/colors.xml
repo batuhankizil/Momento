@@ -14,5 +14,6 @@
     <color name="hint_color">#A3A3A3</color>
     <color name="comment_options_border">#EDEDED</color>
     <color name="mainTextColor">#4A4A4A</color>
+    <color name="line_border">#F1F1F1</color>
     
 </resources>
