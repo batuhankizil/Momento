@@ -12,7 +12,7 @@
         android:id="@+id/sign_in_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in_title"
+        android:text="@string/edit_profile"
         android:layout_centerHorizontal="true"
         android:textSize="16sp"
         android:textColor="@color/page_title"
@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sign_in_explanation"
+            android:text="@string/set_up_profile_explanation"
             android:textSize="12sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="25dp"
@@ -42,9 +42,22 @@
             android:layout_marginTop="50dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:hint="@string/hint_email_id"
-            android:textCursorDrawable="@drawable/cursor_color"
+            android:hint="Batuhan Kızıl"
             android:textSize="12sp"
+            android:paddingStart="10dp"
+            android:textColorHint="@color/hint_color"
+            android:background="@drawable/background_edittext_border"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:hint="Haziran 22, 1999"
+            android:textSize="12sp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:paddingStart="10dp"
             android:textColorHint="@color/hint_color"
             android:background="@drawable/background_edittext_border"/>
@@ -54,11 +67,22 @@
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
-            android:hint="@string/hint_password"
+            android:hint="Erkek"
             android:textSize="12sp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:textCursorDrawable="@drawable/cursor_color"
+            android:paddingStart="10dp"
+            android:textColorHint="@color/hint_color"
+            android:background="@drawable/background_edittext_border"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:hint="Hakkında"
+            android:textSize="12sp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:paddingStart="10dp"
             android:textColorHint="@color/hint_color"
             android:background="@drawable/background_edittext_border"/>
@@ -68,21 +92,12 @@
             android:layout_height="48dp"
             android:background="@drawable/background_gradient_button"
             android:textColor="@color/colorWhite"
-            android:text="@string/go_to_momento"
+            android:text="@string/save"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:textAllCaps="false"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:text="@string/sign_in_page_reset_password"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/link_button"
-            android:textAlignment="center"/>
 
     </LinearLayout>
 

@@ -60,7 +60,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Takipçi"
+                android:text="@string/follower"
                 android:textSize="12sp"
                 android:textColor="@color/page_title"
                 android:layout_gravity="end"/>
@@ -105,7 +105,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Takip"
+                android:text="@string/following"
                 android:textColor="@color/page_title"
                 android:textSize="12sp"/>
 
@@ -130,7 +130,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hakkında"
+            android:text="@string/about"
             android:textSize="12sp"
             android:textColor="@color/page_title"
             android:layout_marginTop="10dp"
@@ -153,5 +153,26 @@
         android:layout_marginTop="10dp">
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </ListView>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@mipmap/icon_photo_camera"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
 
 </LinearLayout>
