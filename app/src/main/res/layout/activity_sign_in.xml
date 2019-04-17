@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignInActivity"
+    tools:context=".Activity.SignInActivity"
     android:background="@color/colorWhite">
 
 
@@ -64,6 +64,7 @@
             android:background="@drawable/background_edittext_border"/>
         
         <Button
+            android:id="@+id/signInHome"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/background_gradient_button"

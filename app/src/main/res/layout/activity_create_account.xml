@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Activity.MainActivity"
     android:background="@color/colorWhite">
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_below="@+id/sign_in_title"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:background="@color/colorWhite">
 
         <TextView
@@ -37,13 +37,12 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:hint="@string/hint_email_id"
             android:textSize="12sp"
             android:paddingStart="10dp"
-            android:textColorHint="@color/page_title"
+            android:textColorHint="@color/hint_color"
             android:background="@drawable/background_edittext_border"/>
 
         <EditText
@@ -51,13 +50,13 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="35dp"
+            android:layout_marginRight="25dp"
             android:background="@drawable/background_edittext_border"
             android:hint="@string/hint_password"
             android:paddingStart="10dp"
-            android:textColorHint="@color/page_title"
+            android:textColorHint="@color/hint_color"
             android:textSize="12sp" />
 
         <EditText
@@ -65,13 +64,13 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="35dp"
+            android:layout_marginRight="25dp"
             android:background="@drawable/background_edittext_border"
             android:hint="@string/hint_confirm_password"
             android:paddingStart="10dp"
-            android:textColorHint="@color/page_title"
+            android:textColorHint="@color/hint_color"
             android:textSize="12sp" />
 
         <Button
@@ -80,8 +79,9 @@
             android:background="@drawable/background_gradient_button"
             android:textColor="@color/colorWhite"
             android:text="@string/proceed"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp"
+            android:textAllCaps="false"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"/>
     </LinearLayout>
