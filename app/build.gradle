@@ -1,10 +1,24 @@
+project.ext {
+    support = "1.0.0"
+    support2 = "1.0.2"
+    constraintlayout = "2.0.0-alpha3"
+    material = "1.0.0-alpha4"
+    arch = "2.0.0"
+    retrofit = "2.0.2"
+    dagger_version = "2.21"
+    android_dagger_version = "2.21"
+    firebase_core = "16.0.7"
+    crashlytics = "2.9.9"
+    design2 = "28.0.0"
+}
+
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.batu.momento"
-        minSdkVersion 18
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -16,17 +30,50 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding{
+        enabled = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    implementation "com.google.android.material:material:$project.support"
+    implementation "androidx.appcompat:appcompat:$project.support2"
+    implementation "androidx.cardview:cardview:$project.support"
+    //implementation "com.android.support:design:$design2"
+    implementation "androidx.recyclerview:recyclerview:$project.support"
+    implementation "androidx.constraintlayout:constraintlayout:$project.constraintlayout"
+    implementation "androidx.legacy:legacy-support-v4:$project.support"
+    implementation "com.google.android.material:material:$material"
+
+    // Arch
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$project.arch"
+    implementation "androidx.lifecycle:lifecycle-runtime:$project.arch"
+    implementation "androidx.lifecycle:lifecycle-extensions:$project.arch"
+
+    // Dagger
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger:$project.dagger_version"
+    implementation "com.google.dagger:dagger-android:$project.android_dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$project.android_dagger_version"
+    implementation 'com.github.gcacace:signature-pad:1.2.1'
+
+    // Include supported authentication methods for your application
+    implementation 'com.loopeer.lib:shadow:0.0.4-beta3'
+    implementation 'co.lujun:androidtagview:1.1.7'
+    implementation ('com.microsoft.services.msa:msa-auth:0.8.+')
+    implementation ('com.microsoft.aad:adal:1.1.+')
+    implementation ('com.onedrive.sdk:onedrive-sdk-android:1.3+') {
+        transitive = false
+    }
+
     //Drawer Menu
-    implementation 'com.android.support:design:28.0.0'
+    //implementation "com.android.support.design:$design2"
 
 }

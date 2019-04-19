@@ -2,27 +2,23 @@ package com.example.batu.momento.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-import com.example.batu.momento.Fragment.FragmentHome;
 import com.example.batu.momento.R;
+import com.example.batu.momento.databinding.ActivitySignInBinding;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 public class SignInActivity extends AppCompatActivity {
+
+    private ActivitySignInBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
 
-
-        TextView resetPassword = findViewById(R.id.reset_password);
-
-        resetPassword.setOnClickListener(new View.OnClickListener() {
+        binding.resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent resetPasswordPage = new Intent(SignInActivity.this, ResetPasswordActivity.class);
@@ -30,9 +26,7 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-        Button signInHome = findViewById(R.id.signInHome);
-
-        signInHome.setOnClickListener(new View.OnClickListener() {
+        binding.signInHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
