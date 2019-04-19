@@ -26,6 +26,8 @@ public class HomeActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("MOMENTO");
 
+        
+
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, new FragmentHome())
