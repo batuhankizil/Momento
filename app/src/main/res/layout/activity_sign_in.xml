@@ -77,13 +77,14 @@
             android:textAllCaps="false"/>
 
         <TextView
+            android:id="@+id/reset_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="70dp"
             android:text="@string/sign_in_page_reset_password"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/link_button"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textColor="@color/link_button" />
 
     </LinearLayout>
 
