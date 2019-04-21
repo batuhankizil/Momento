@@ -3,7 +3,7 @@
     <string name="app_name">Momento</string>
     <string name="slogan">Memento, anlarınızı arkadaşlarınızla paylaşmanıza izin veren sosyal bir uygulamadır</string>
     <string name="sign_in_explanation">Momento için oluşturduğunuz e-posta kimliğinizi ve şifrenizi girerek devam edebilirsiniz.</string>
-    <string name="reset_password_explanation">No Problem! Just give in your Email ID and we will send \n you a link to reset your password</string>
+    <string name="reset_password_explanation">Sorun Yok! Email Adresini Girerek Sana Yollayacağımız Bağlantı ile \n Şifreni Sıfırlayabilirsin.</string>
     <string name="create_new_password_explanation">Güçlü bir parola için harf, sayı ve $,!, vb. gibi özel karakterleri kullanabilirsiniz.</string>
     <string name="create_account_explanation">Gerekli bilgileri doldurarak devam edebilirsiniz. * ile işaretli alanların doldurulması zorunludur</string>
     <string name="set_up_profile_explanation">Hey! Momento da paylaşmaya başlamadan önce sizden birkaç ayrıntıya ihtiyacımız var</string>
@@ -14,8 +14,8 @@
     <string name="create_new_account">Yeni Hesap Oluştur</string>
     <string name="sign_in_title">Giriş Yap</string>
     <string name="sign_in_page_reset_password">Giriş Yapamıyor musunuz ? \n Şifrenizi Sıfırlayın</string>
-    <string name="reset_password_title">Reset Password</string>
-    <string name="reset_password_send_link">Send Link</string>
+    <string name="reset_password_title">Şifreni Sıfırla</string>
+    <string name="reset_password_send_link">Gönder</string>
     <string name="create_new_password_title">Yeni Şifre Oluştur</string>
     <string name="hint_new_password">Yeni Şifre</string>
     <string name="hint_confirm_new_password">Yeni Şifre Tekrar</string>
