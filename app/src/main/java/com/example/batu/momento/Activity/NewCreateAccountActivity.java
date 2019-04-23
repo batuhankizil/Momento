@@ -1,8 +1,9 @@
 package com.example.batu.momento.Activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import com.example.batu.momento.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class NewCreateAccountActivity extends AppCompatActivity {
 
