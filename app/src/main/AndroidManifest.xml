@@ -15,6 +15,7 @@
         <activity android:name=".Activity.SignInActivity"/>
         <activity android:name=".Activity.ResetPasswordActivity"/>
         <activity android:name=".Activity.HomeActivity"/>
+        <activity android:name=".Activity.SetUpProfileActivity"/>
         <activity android:name=".Activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

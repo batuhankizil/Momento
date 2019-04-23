@@ -35,11 +35,8 @@ public class SignInActivity extends AppCompatActivity {
                 ft.addToBackStack(null);
                 ft.commit();*/
 
-
-                Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
-
-
 
             }
         });

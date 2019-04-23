@@ -75,6 +75,7 @@
                 android:textSize="12sp" />
 
             <Button
+                android:id="@+id/next_page"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/background_gradient_button"
