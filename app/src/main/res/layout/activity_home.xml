@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:background="@color/colorWhite"
         tools:openDrawer="start">
 
         <LinearLayout
@@ -17,9 +18,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorWhite"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
+                android:background="@color/colorWhite">
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -39,7 +38,6 @@
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/nav_header"
             app:menu="@menu/drawer_menu" />
-
     </androidx.drawerlayout.widget.DrawerLayout>
 
 </layout>

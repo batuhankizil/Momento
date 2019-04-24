@@ -7,6 +7,7 @@ import com.example.batu.momento.Fragment.FragmentHome;
 import com.example.batu.momento.R;
 import com.example.batu.momento.databinding.ActivityHomeBinding;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -18,7 +19,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
 
 

@@ -15,7 +15,7 @@
             android:title="Sohbet" />
         <item
             android:id="@+id/nav_notification"
-            android:icon="@mipmap/icon_info"
+            android:icon="@mipmap/icon_notification"
             android:title="Bildirimler" />
         <item
             android:id="@+id/nav_saved"
