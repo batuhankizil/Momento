@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1019484845889",
+    "firebase_url": "https://momento-application.firebaseio.com",
+    "project_id": "momento-application",
+    "storage_bucket": "momento-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019484845889:android:f39e11940ad73fad",
+        "android_client_info": {
+          "package_name": "com.example.batu.momento"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019484845889-ls7lol7dd9gfqf0mqr2l4q00c4ciu643.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.batu.momento",
+            "certificate_hash": "4c4d81a8790336ac6e45a77dd94ba6d3588ed63a"
+          }
+        },
+        {
+          "client_id": "1019484845889-aqb1dedmftccemf2fbkefsck64kdbue4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATn7c5ZEozUCWcVGV3sw2Cv_HFmtNdDOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019484845889-aqb1dedmftccemf2fbkefsck64kdbue4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

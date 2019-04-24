@@ -7,16 +7,33 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_profile"
+            android:icon="@mipmap/icon_my_profile"
             android:title="Profilim" />
         <item
             android:id="@+id/nav_chat"
-            android:icon="@drawable/ic_chat"
+            android:icon="@mipmap/icon_chat"
             android:title="Sohbet" />
         <item
+            android:id="@+id/nav_notification"
+            android:icon="@mipmap/icon_info"
+            android:title="Bildirimler" />
+        <item
+            android:id="@+id/nav_saved"
+            android:icon="@mipmap/icon_saved"
+            android:title="Kaydedilenler" />
+        <item
+            android:id="@+id/nav_info"
+            android:icon="@mipmap/icon_info"
+            android:title="Momento Hakkında" />
+        <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_settings"
+            android:icon="@mipmap/icon_settings"
             android:title="Ayarlar" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@mipmap/icon_logout"
+            android:title="Çıkış Yap" />
+
     </group>
 
 </menu>
