@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 
+import com.example.batu.momento.Fragment.FragmentChats;
 import com.example.batu.momento.Fragment.FragmentHome;
 import com.example.batu.momento.Fragment.FragmentProfile;
 import com.example.batu.momento.R;
@@ -35,10 +36,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-
-
-        getSupportActionBar().setTitle("MOMENTO");
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, new FragmentHome())
@@ -46,14 +43,43 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public void onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-        switch (menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.nav_profile:
                 getSupportFragmentManager()
                         .beginTransaction()
+                        .addToBackStack(null)
                         .replace(R.id.fragment_container,
-                                new FragmentProfile()).commit();
+                                new FragmentProfile())
+                        .commit();
+                break;
+            case R.id.nav_chat:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.fragment_container,
+                                new FragmentChats())
+                        .commit();
+                break;
+            case R.id.nav_notification:
+                break;
+            case R.id.nav_saved:
+                break;
+            case R.id.nav_info:
+                break;
+            case R.id.nav_settings:
+                break;
+            case R.id.nav_logout:
                 break;
         }
 

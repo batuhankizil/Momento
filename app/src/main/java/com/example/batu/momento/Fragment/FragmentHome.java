@@ -11,6 +11,7 @@ import com.example.batu.momento.databinding.FragmentHomeBinding;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -37,7 +38,6 @@ public class FragmentHome extends Fragment {
         binding.comments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getFragmentManager();
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.fragment_container, new FragmentComments());
                 ft.addToBackStack(null);
@@ -45,6 +45,12 @@ public class FragmentHome extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("MOMENTO");
     }
 
 }
