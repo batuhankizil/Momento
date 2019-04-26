@@ -1,6 +1,7 @@
 package com.example.batu.momento.Activity;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 
@@ -59,16 +60,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager()
                         .beginTransaction()
                         .addToBackStack(null)
-                        .replace(R.id.fragment_container,
-                                new FragmentProfile())
+                        .replace(R.id.fragment_container, new FragmentProfile())
                         .commit();
                 break;
             case R.id.nav_chat:
                 getSupportFragmentManager()
                         .beginTransaction()
                         .addToBackStack(null)
-                        .replace(R.id.fragment_container,
-                                new FragmentChats())
+                        .replace(R.id.fragment_container, new FragmentChats())
                         .commit();
                 break;
             case R.id.nav_notification:
@@ -84,6 +83,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
 
         binding.drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.app_bar, menu);
         return true;
     }
 }

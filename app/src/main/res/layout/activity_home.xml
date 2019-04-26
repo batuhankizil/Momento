@@ -23,13 +23,6 @@
                 android:background="@color/colorWhite"
                 app:popupTheme="@style/AppTheme.AppBarOverlay">
 
-                <androidx.appcompat.widget.SearchView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@mipmap/icon_search_button"
-                    android:gravity="end">
-
-                </androidx.appcompat.widget.SearchView>
 
             </androidx.appcompat.widget.Toolbar>
 
