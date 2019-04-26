@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "1019484845889-vnmftcekt8d7du7ltcg1nnl08jj8bcgg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.batu.momento",
+            "certificate_hash": "11dabe18a99272f6aeb6210915b750b8228831d2"
+          }
+        },
+        {
           "client_id": "1019484845889-aqb1dedmftccemf2fbkefsck64kdbue4.apps.googleusercontent.com",
           "client_type": 3
         }
