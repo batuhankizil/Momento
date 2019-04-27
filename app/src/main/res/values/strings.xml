@@ -1,6 +1,6 @@
 <resources>
     <string name="application_name">Momento</string>
-    <string name="app_name">Momento</string>
+    <string name="app_name">MOMENTO</string>
     <string name="slogan">Memento, anlarınızı arkadaşlarınızla paylaşmanıza izin veren sosyal bir uygulamadır</string>
     <string name="sign_in_explanation">Momento için oluşturduğunuz e-posta kimliğinizi ve şifrenizi girerek devam edebilirsiniz.</string>
     <string name="reset_password_explanation">Sorun Değil! Sadece Email adresini girerek, sana yollayacağımız bağlantıdan şifreni sıfırlayabilirsin.</string>
@@ -39,5 +39,11 @@
     <string name="set_profile">Profili Ayarla</string>
     <string name="navigation_drawer_open">Navigation Drawer Open</string>
     <string name="navigation_drawer_close">Navigation Drawer Close</string>
-
+    <string name="my_profile">Profilim</string>
+    <string name="chat">Sohbet</string>
+    <string name="notifications">Bildirimler</string>
+    <string name="photo_saved">Kaydedilenler</string>
+    <string name="momento_info">Momento Hakkında</string>
+    <string name="settings">Ayarlar</string>
+    <string name="log_out">Çıkış Yap</string>
 </resources>

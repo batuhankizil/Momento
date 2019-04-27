@@ -1,12 +1,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         android:background="@color/colorWhite"
+        android:fitsSystemWindows="true"
         tools:openDrawer="start">
 
         <LinearLayout
@@ -14,11 +15,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorWhite">
+                android:background="@color/colorWhite"
+                app:popupTheme="@style/AppTheme.AppBarOverlay">
+
 
             </androidx.appcompat.widget.Toolbar>
 
