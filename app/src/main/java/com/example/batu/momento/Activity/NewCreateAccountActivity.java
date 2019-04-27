@@ -47,35 +47,35 @@ public class NewCreateAccountActivity extends AppCompatActivity {
                 String str_create_account_email = binding.createAccountEmail.getText().toString();
                 String str_create_account_password = binding.createAccountPassword.getText().toString();
                 String str_create_account_confirm_password = binding.createAccountConfirmPassword.getText().toString();
-
+                
                 if (TextUtils.isEmpty(str_create_account_email) || TextUtils.isEmpty(str_create_account_password)
-                        || TextUtils.isEmpty(str_create_account_confirm_password)){
+                        || TextUtils.isEmpty(str_create_account_confirm_password)) {
                     Toast.makeText(NewCreateAccountActivity.this, "Alanlar Boş Bırakılamaz!", Toast.LENGTH_SHORT).show();
                 }
                 /*if (str_create_account_password != str_create_account_confirm_password){
                     Toast.makeText(NewCreateAccountActivity.this, "Şifreler Uyuşmuyor!", Toast.LENGTH_SHORT).show();
                 }*/
                 else
-                register(str_create_account_email,str_create_account_password,str_create_account_confirm_password);
+                    register(str_create_account_email, str_create_account_password, str_create_account_confirm_password);
 
             }
         });
     }
 
-    private void register(final String createAccountEmail, final String createAccountPassword, String createAccountConfirmPassword){
-        auth.createUserWithEmailAndPassword(createAccountEmail,createAccountPassword)
+    private void register(final String createAccountEmail, final String createAccountPassword, String createAccountConfirmPassword) {
+        auth.createUserWithEmailAndPassword(createAccountEmail, createAccountPassword)
                 .addOnCompleteListener(NewCreateAccountActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             FirebaseUser firebaseUser = auth.getCurrentUser();
                             String userid = firebaseUser.getUid();
 
                             reference = FirebaseDatabase.getInstance().getReference().child("Users").child(userid);
 
                             HashMap<String, Object> hashMap = new HashMap<>();
-                            hashMap.put("Email",createAccountEmail.toLowerCase());
-                            hashMap.put("Sifre",createAccountPassword);
+                            hashMap.put("Email", createAccountEmail.toLowerCase());
+                            hashMap.put("Sifre", createAccountPassword);
 
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -85,8 +85,7 @@ public class NewCreateAccountActivity extends AppCompatActivity {
                                     startActivity(setUpProfileActivity);
                                 }
                             });
-                        }
-                        else{
+                        } else {
                             Toast.makeText(NewCreateAccountActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
