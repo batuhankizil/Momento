@@ -1,5 +1,6 @@
 package com.example.batu.momento.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import com.example.batu.momento.Fragment.FragmentChats;
 import com.example.batu.momento.Fragment.FragmentHome;
 import com.example.batu.momento.Fragment.FragmentProfile;
+import com.example.batu.momento.Fragment.FragmentSaved;
 import com.example.batu.momento.R;
 import com.example.batu.momento.databinding.ActivityHomeBinding;
 import com.google.android.material.navigation.NavigationView;
@@ -73,12 +75,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_notification:
                 break;
             case R.id.nav_saved:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.fragment_container, new FragmentSaved())
+                        .commit();
                 break;
             case R.id.nav_info:
                 break;
             case R.id.nav_settings:
                 break;
             case R.id.nav_logout:
+                Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
+                startActivity(intent);
                 break;
         }
 

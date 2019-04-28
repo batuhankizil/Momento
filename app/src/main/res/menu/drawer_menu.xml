@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="none">
         <item
             android:id="@+id/nav_profile"
             android:icon="@mipmap/icon_my_profile"
@@ -32,7 +31,6 @@
             android:id="@+id/nav_logout"
             android:icon="@mipmap/icon_logout"
             android:title="@string/log_out" />
-
     </group>
 
 </menu>

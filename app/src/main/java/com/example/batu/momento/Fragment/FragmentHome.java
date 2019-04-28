@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.example.batu.momento.R;
 import com.example.batu.momento.databinding.FragmentHomeBinding;
+import com.example.batu.momento.databinding.UserPostLayoutBinding;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,12 +20,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class FragmentHome extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private UserPostLayoutBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false);
+        binding = DataBindingUtil.inflate(inflater,R.layout.user_post_layout, container, false);
 
         return binding.getRoot();
 
@@ -35,7 +36,7 @@ public class FragmentHome extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        binding.comments.setOnClickListener(new View.OnClickListener() {
+        binding.commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getFragmentManager().beginTransaction();

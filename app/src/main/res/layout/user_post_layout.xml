@@ -1,78 +1,78 @@
 <layout>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <ImageView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_margin="10dp"
-        android:src="@drawable/logo_app" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Harika bir fotoğraf" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/logo_app" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Harika bir fotoğraf" />
 
-        <ImageView
-            android:id="@+id/user_profile"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/icon_calendar" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
 
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@+id/user_profile"
-            android:text="Batuhan Kızıl"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/user_profile"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_calendar" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/user_name"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@+id/user_profile"
-            android:text="10 DAKİKA ÖNCE"
-            android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/user_profile"
+                    android:text="Batuhan Kızıl"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="8dp"
-            android:layout_toStartOf="@id/like_button"
-            android:text="210" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/user_name"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/user_profile"
+                    android:text="10 DAKİKA ÖNCE"
+                    android:textSize="10sp" />
 
-        <Button
-            android:id="@+id/like_button"
-            android:layout_width="20dp"
-            android:layout_height="18dp"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
-            android:layout_toStartOf="@+id/comment_button"
-            android:background="@mipmap/icon_notification" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_toStartOf="@id/like_button"
+                    android:text="210" />
 
-        <Button
-            android:id="@+id/comment_button"
-            android:layout_width="20dp"
-            android:layout_height="18dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:background="@mipmap/icon_comment" />
+                <Button
+                    android:id="@+id/like_button"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/comment_button"
+                    android:background="@mipmap/icon_notification" />
 
-    </RelativeLayout>
+                <Button
+                    android:id="@+id/comment_button"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@mipmap/icon_comment" />
 
-</LinearLayout>
+            </RelativeLayout>
+
+    </LinearLayout>
 </layout>

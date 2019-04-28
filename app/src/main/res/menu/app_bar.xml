@@ -6,6 +6,7 @@
         android:id="@+id/nav_search"
         android:icon="@mipmap/icon_search_button"
         android:title="search"
-        app:showAsAction="always"
-        app:actionViewClass="android.widget.SearchView" />
+        app:showAsAction="ifRoom"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
 </menu>

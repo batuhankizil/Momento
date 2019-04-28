@@ -31,6 +31,7 @@ public class FragmentComments extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.app_bar, menu);
         super.onCreateOptionsMenu(menu,inflater);
+        setHasOptionsMenu(true);
     }
 
     @Override
