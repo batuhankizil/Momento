@@ -19,6 +19,7 @@
             android:textSize="16sp" />
 
         <LinearLayout
+            android:id="@+id/create_account_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/sign_in_title"

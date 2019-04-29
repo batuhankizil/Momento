@@ -1,11 +1,14 @@
 package com.example.batu.momento.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.batu.momento.Fragment.FragmentCommentOptionsDialog;
+import com.example.batu.momento.Fragment.FragmentProfile;
 import com.example.batu.momento.R;
 import com.example.batu.momento.databinding.ActivityCreateAccountBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -41,22 +45,38 @@ public class NewCreateAccountActivity extends AppCompatActivity {
         binding.nextPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent setUpProfileActivity = new Intent(getApplicationContext(), SetUpProfileActivity.class);
-                startActivity(setUpProfileActivity);*/
 
-                String str_create_account_email = binding.createAccountEmail.getText().toString();
-                String str_create_account_password = binding.createAccountPassword.getText().toString();
-                String str_create_account_confirm_password = binding.createAccountConfirmPassword.getText().toString();
+                String createAccountEmail = binding.createAccountEmail.getText().toString();
+                String createAccountPassword = binding.createAccountPassword.getText().toString();
+                String createAccountConfirmPassword = binding.createAccountConfirmPassword.getText().toString();
                 
-                if (TextUtils.isEmpty(str_create_account_email) || TextUtils.isEmpty(str_create_account_password)
-                        || TextUtils.isEmpty(str_create_account_confirm_password)) {
-                    Toast.makeText(NewCreateAccountActivity.this, "Alanlar Boş Bırakılamaz!", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(createAccountEmail) || TextUtils.isEmpty(createAccountPassword) || TextUtils.isEmpty(createAccountConfirmPassword)) {
+                    //Toast.makeText(NewCreateAccountActivity.this, "Alanlar Boş Bırakılamaz!", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(NewCreateAccountActivity.this);
+                    builder.setTitle("Hata!");
+                    builder.setMessage("Alanlar Boş Bırakılamaz.");
+
+                    builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    });
+                    builder.show();
+
                 }
-                /*if (str_create_account_password != str_create_account_confirm_password){
-                    Toast.makeText(NewCreateAccountActivity.this, "Şifreler Uyuşmuyor!", Toast.LENGTH_SHORT).show();
-                }*/
+                else if (!createAccountPassword.equals(createAccountConfirmPassword)){
+                    //Toast.makeText(NewCreateAccountActivity.this, "Şifreler Uyuşmuyor!", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(NewCreateAccountActivity.this);
+                    builder.setTitle("Hata!");
+                    builder.setMessage("Şifreler Uyuşmuyor.");
+
+                    builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    });
+                    builder.show();
+                }
                 else
-                    register(str_create_account_email, str_create_account_password, str_create_account_confirm_password);
+                    register(createAccountEmail, createAccountPassword, createAccountConfirmPassword);
 
             }
         });
@@ -81,7 +101,7 @@ public class NewCreateAccountActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Intent setUpProfileActivity = new Intent(getApplicationContext(), SetUpProfileActivity.class);
-                                    //setUpProfileActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    setUpProfileActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(setUpProfileActivity);
                                 }
                             });
