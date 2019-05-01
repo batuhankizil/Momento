@@ -29,7 +29,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
 
+        ActionBarDrawer();
+        FragmentHomePage();
 
+    }
+
+    private void FragmentHomePage(){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, new FragmentHome())
+                .commit();
+    }
+
+    private void ActionBarDrawer(){
         setSupportActionBar(binding.toolbar);
 
         binding.navView.setNavigationItemSelectedListener(this);
@@ -38,11 +50,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, new FragmentHome())
-                .commit();
     }
 
     @Override
