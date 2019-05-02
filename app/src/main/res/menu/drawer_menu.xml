@@ -2,11 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="none">
+    <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_home_button"
             android:icon="@drawable/icon_home"
-            android:title="@string/home" />
+            android:title="@string/home_button" />
         <item
             android:id="@+id/nav_profile"
             android:icon="@mipmap/icon_my_profile"

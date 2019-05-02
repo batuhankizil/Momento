@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
 
-
         binding.signinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,24 +34,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-    /*@Override
-    public void onBackPressed(){
-        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)){
-            mDrawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else
-            super.onBackPressed();
-    }*/
-
     }
 
-    private void SignInActivity(){
+    private void SignInActivity() {
         Intent signInPage = new Intent(getApplicationContext(), SignInActivity.class);
         startActivity(signInPage);
     }
 
-    private void NewCreateAccountActivity(){
+    private void NewCreateAccountActivity() {
         Intent newCreateAccount = new Intent(getApplicationContext(), NewCreateAccountActivity.class);
         startActivity(newCreateAccount);
     }

@@ -32,20 +32,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawer();
         FragmentHomePage();
 
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, new FragmentHome())
+                    .commit();
+            binding.navView.setCheckedItem(R.id.nav_home_button);
+        }
     }
 
-    private void FragmentHomePage(){
+    private void FragmentHomePage() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, new FragmentHome())
                 .commit();
     }
 
-    private void ActionBarDrawer(){
+    private void ActionBarDrawer() {
         setSupportActionBar(binding.toolbar);
-
         binding.navView.setNavigationItemSelectedListener(this);
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, binding.drawerLayout, binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.addDrawerListener(toggle);
@@ -65,7 +71,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
-            case R.id.nav_home:
+            case R.id.nav_home_button:
                 getSupportFragmentManager()
                         .beginTransaction()
                         .addToBackStack(null)
@@ -100,7 +106,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_settings:
                 break;
             case R.id.nav_logout:
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 break;
         }
