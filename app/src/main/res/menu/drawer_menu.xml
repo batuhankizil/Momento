@@ -4,6 +4,10 @@
 
     <group android:checkableBehavior="none">
         <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/icon_home"
+            android:title="@string/home" />
+        <item
             android:id="@+id/nav_profile"
             android:icon="@mipmap/icon_my_profile"
             android:title="@string/my_profile" />

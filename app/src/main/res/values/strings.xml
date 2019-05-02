@@ -46,4 +46,5 @@
     <string name="momento_info">Momento Hakkında</string>
     <string name="settings">Ayarlar</string>
     <string name="log_out">Çıkış Yap</string>
+    <string name="home">Anasayfa</string>
 </resources>

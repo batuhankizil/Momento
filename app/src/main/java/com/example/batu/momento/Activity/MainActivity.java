@@ -24,16 +24,14 @@ public class MainActivity extends AppCompatActivity {
         binding.signinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signInPage = new Intent(getApplicationContext(), SignInActivity.class);
-                startActivity(signInPage);
+                SignInActivity();
             }
         });
 
         binding.createNewAccountLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newCreateAccount = new Intent(getApplicationContext(), NewCreateAccountActivity.class);
-                startActivity(newCreateAccount);
+                NewCreateAccountActivity();
             }
         });
 
@@ -47,6 +45,16 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
     }*/
 
+    }
+
+    private void SignInActivity(){
+        Intent signInPage = new Intent(getApplicationContext(), SignInActivity.class);
+        startActivity(signInPage);
+    }
+
+    private void NewCreateAccountActivity(){
+        Intent newCreateAccount = new Intent(getApplicationContext(), NewCreateAccountActivity.class);
+        startActivity(newCreateAccount);
     }
 
 }
