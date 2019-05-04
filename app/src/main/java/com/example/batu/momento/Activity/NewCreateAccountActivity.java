@@ -75,6 +75,17 @@ public class NewCreateAccountActivity extends AppCompatActivity {
                     });
                     builder.show();
                 }
+                else if (createAccountPassword.length() < 6){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(NewCreateAccountActivity.this);
+                    builder.setTitle("Hata!");
+                    builder.setMessage("Şifreniz En Az 6 Karakter Olmalı.");
+
+                    builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    });
+                    builder.show();
+                }
                 else
                     register(createAccountEmail, createAccountPassword, createAccountConfirmPassword);
 
