@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 
 import com.example.batu.momento.Fragment.FragmentChats;
@@ -13,24 +15,46 @@ import com.example.batu.momento.Fragment.FragmentSaved;
 import com.example.batu.momento.R;
 import com.example.batu.momento.databinding.ActivityHomeBinding;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ActivityHomeBinding binding;
+
+    private FirebaseAuth mAuth;
+    private DatabaseReference userReference;
+
+    private NavigationView navigationView;
+
+    public TextView userFullName;
+    public TextView userEmail;
+
+    String currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
 
+        mAuth = FirebaseAuth.getInstance();
+        currentUserId = mAuth.getCurrentUser().getUid();
+        userReference = FirebaseDatabase.getInstance().getReference().child("Users");
+
         ActionBarDrawer();
         FragmentHomePage();
+        UserNavigationHeader();
 
 
         if (savedInstanceState == null) {
@@ -40,6 +64,33 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     .commit();
             binding.navView.setCheckedItem(R.id.nav_home_button);
         }
+    }
+
+    private void UserNavigationHeader() {
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View navView = navigationView.inflateHeaderView(R.layout.nav_header);
+
+        userFullName = (TextView) navView.findViewById(R.id.user_full_name);
+        userEmail = (TextView) navView.findViewById(R.id.user_email);
+
+        userReference.child(currentUserId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String fullName = dataSnapshot.child("FullName").getValue().toString();
+                    String eMail = dataSnapshot.child("Email").getValue().toString();
+
+                    userFullName.setText(fullName);
+                    userEmail.setText(eMail);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private void FragmentHomePage() {

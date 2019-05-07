@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         binding.createNewAccountLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,6 +1,6 @@
 <layout>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
@@ -24,32 +24,32 @@
                 android:id="@+id/user_full_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/user_img"
                 android:layout_marginStart="20dp"
-                android:paddingTop="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/user_img"
                 android:text="Batuhan Kızıl"
-                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/page_title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/user_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/user_img"
                 android:layout_below="@id/user_full_name"
                 android:layout_alignStart="@+id/user_full_name"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/page_title"
-                android:text="batuhankizil@gmail.com" />
+                android:layout_toEndOf="@+id/user_img"
+                android:text="batuhankizil@gmail.com"
+                android:textColor="@color/page_title" />
 
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/line_border"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:background="@color/line_border">
 
         </LinearLayout>
 
