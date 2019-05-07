@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.batu.momento.R;
+import com.example.batu.momento.Utils.PreferenceUtils;
 import com.example.batu.momento.databinding.ActivitySignInBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,45 +47,54 @@ public class SignInActivity extends AppCompatActivity {
         binding.signInHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String eMail = binding.userEmail.getText().toString();
-                String password = binding.userPassword.getText().toString();
+                LoginControl();
 
-                if (TextUtils.isEmpty(eMail) || TextUtils.isEmpty(password)){
-                    Toast.makeText(SignInActivity.this, "Lütfen Bilgilerinizi Giriniz.", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    auth.signInWithEmailAndPassword(eMail,password)
-                            .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()){
-                                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users")
-                                                .child(auth.getCurrentUser().getUid());
+            }
 
-                                        reference.addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                                startActivity(intent);
-                                            }
+        });
+    }
 
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+    public void LoginControl() {
+        final String eMail = binding.userEmail.getText().toString();
+        final String password = binding.userPassword.getText().toString();
 
-                                            }
-                                        });
+        if (TextUtils.isEmpty(eMail) || TextUtils.isEmpty(password)) {
+            Toast.makeText(SignInActivity.this, "Lütfen Bilgilerinizi Giriniz.", Toast.LENGTH_SHORT).show();
+        } else {
+            auth.signInWithEmailAndPassword(eMail, password)
+                    .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users")
+                                        .child(auth.getCurrentUser().getUid());
+
+                                reference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        /*Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);*/
+                                        PreferenceUtils.saveEmail(eMail, getApplicationContext());
+                                        PreferenceUtils.savePassword(password, getApplicationContext());
+                                        Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                                        //homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        homeIntent.putExtra("eMail", binding.userEmail.getText().toString().trim());
+                                        startActivity(homeIntent);
+                                        finish();
                                     }
 
-                                    else
-                                        Toast.makeText(SignInActivity.this, "Giriş Başarısız.", Toast.LENGTH_SHORT).show();
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                }
-                            });
-                }
-            }
-        });
+                                    }
+                                });
+                            } else
+                                Toast.makeText(SignInActivity.this, "Giriş Başarısız.", Toast.LENGTH_SHORT).show();
 
+                        }
+                    });
+        }
     }
 
 }

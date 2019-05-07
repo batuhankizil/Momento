@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.batu.momento.R;
+import com.example.batu.momento.Utils.PreferenceUtils;
 import com.example.batu.momento.databinding.ActivityMainBinding;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
+        initViews();
 
         binding.signinButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
     private void NewCreateAccountActivity() {
         Intent newCreateAccount = new Intent(getApplicationContext(), NewCreateAccountActivity.class);
         startActivity(newCreateAccount);
+    }
+
+    public void initViews(){
+        if (PreferenceUtils.getEmail(this) != null){
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+        }else {
+        }
     }
 
 }
