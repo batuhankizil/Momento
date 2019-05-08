@@ -13,6 +13,7 @@ import com.example.batu.momento.Fragment.FragmentHome;
 import com.example.batu.momento.Fragment.FragmentProfile;
 import com.example.batu.momento.Fragment.FragmentSaved;
 import com.example.batu.momento.R;
+import com.example.batu.momento.Utils.PreferenceUtils;
 import com.example.batu.momento.databinding.ActivityHomeBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -157,8 +158,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_settings:
                 break;
             case R.id.nav_logout:
+                PreferenceUtils.saveEmail(null, this);
+                PreferenceUtils.savePassword(null, this);
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+                finish();
                 break;
         }
 

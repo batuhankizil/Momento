@@ -50,10 +50,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initViews(){
-        if (PreferenceUtils.getEmail(this) != null){
+        if (PreferenceUtils.getEmail(this) != null /*|| !PreferenceUtils.getEmail(this).equals("")*/){
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
+            finish();
         }else {
+            /*Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);*/
         }
     }
 
