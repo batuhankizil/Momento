@@ -1,6 +1,7 @@
 package com.example.batu.momento.Model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Users implements Serializable {
     public String userId;
@@ -10,4 +11,5 @@ public class Users implements Serializable {
     public String birtDay;
     public String gender;
     public String about;
+    public List<Followers> followersList;
 }

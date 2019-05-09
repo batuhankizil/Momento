@@ -27,7 +27,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/user_img"
-                android:text="Batuhan Kızıl"
+                android:text=""
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/page_title"
                 android:textStyle="bold" />
@@ -40,7 +40,7 @@
                 android:layout_alignStart="@+id/user_full_name"
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/user_img"
-                android:text="batuhankizil@gmail.com"
+                android:text=""
                 android:textColor="@color/page_title" />
 
         </RelativeLayout>

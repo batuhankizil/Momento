@@ -26,7 +26,7 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/icon_calendar" />
+                    android:src="@drawable/icon_user_profile" />
 
                 <TextView
                     android:id="@+id/user_name"

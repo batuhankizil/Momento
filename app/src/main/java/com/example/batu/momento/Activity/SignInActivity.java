@@ -78,7 +78,7 @@ public class SignInActivity extends AppCompatActivity {
                                         PreferenceUtils.saveEmail(eMail, getApplicationContext());
                                         PreferenceUtils.savePassword(password, getApplicationContext());
                                         Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
-                                        //homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         homeIntent.putExtra("eMail", binding.userEmail.getText().toString().trim());
                                         startActivity(homeIntent);
                                         finish();

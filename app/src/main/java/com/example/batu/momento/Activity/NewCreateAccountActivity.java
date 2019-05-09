@@ -48,51 +48,55 @@ public class NewCreateAccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String createAccountEmail = binding.createAccountEmail.getText().toString();
-                String createAccountPassword = binding.createAccountPassword.getText().toString();
-                String createAccountConfirmPassword = binding.createAccountConfirmPassword.getText().toString();
-                
-                if (TextUtils.isEmpty(createAccountEmail) || TextUtils.isEmpty(createAccountPassword) || TextUtils.isEmpty(createAccountConfirmPassword)) {
-                    //Toast.makeText(NewCreateAccountActivity.this, "Alanlar Boş Bırakılamaz!", Toast.LENGTH_SHORT).show();
-                    AlertDialog.Builder builder = new AlertDialog.Builder(NewCreateAccountActivity.this);
-                    builder.setTitle("Hata!");
-                    builder.setMessage("Alanlar Boş Bırakılamaz.");
-
-                    builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                        }
-                    });
-                    builder.show();
-
-                }
-                else if (!createAccountPassword.equals(createAccountConfirmPassword)){
-                    //Toast.makeText(NewCreateAccountActivity.this, "Şifreler Uyuşmuyor!", Toast.LENGTH_SHORT).show();
-                    AlertDialog.Builder builder = new AlertDialog.Builder(NewCreateAccountActivity.this);
-                    builder.setTitle("Hata!");
-                    builder.setMessage("Şifreler Uyuşmuyor.");
-
-                    builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                        }
-                    });
-                    builder.show();
-                }
-                else if (createAccountPassword.length() < 6){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(NewCreateAccountActivity.this);
-                    builder.setTitle("Hata!");
-                    builder.setMessage("Şifreniz En Az 6 Karakter Olmalı.");
-
-                    builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                        }
-                    });
-                    builder.show();
-                }
-                else
-                    register(createAccountEmail, createAccountPassword, createAccountConfirmPassword);
+                SetupProfileIntent();
 
             }
         });
+    }
+
+    private void SetupProfileIntent(){
+        String createAccountEmail = binding.createAccountEmail.getText().toString();
+        String createAccountPassword = binding.createAccountPassword.getText().toString();
+        String createAccountConfirmPassword = binding.createAccountConfirmPassword.getText().toString();
+
+        if (TextUtils.isEmpty(createAccountEmail) || TextUtils.isEmpty(createAccountPassword) || TextUtils.isEmpty(createAccountConfirmPassword)) {
+            //Toast.makeText(NewCreateAccountActivity.this, "Alanlar Boş Bırakılamaz!", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(NewCreateAccountActivity.this);
+            builder.setTitle("Hata!");
+            builder.setMessage("Alanlar Boş Bırakılamaz.");
+
+            builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                }
+            });
+            builder.show();
+
+        }
+        else if (!createAccountPassword.equals(createAccountConfirmPassword)){
+            //Toast.makeText(NewCreateAccountActivity.this, "Şifreler Uyuşmuyor!", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(NewCreateAccountActivity.this);
+            builder.setTitle("Hata!");
+            builder.setMessage("Şifreler Uyuşmuyor.");
+
+            builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                }
+            });
+            builder.show();
+        }
+        else if (createAccountPassword.length() < 6){
+            AlertDialog.Builder builder = new AlertDialog.Builder(NewCreateAccountActivity.this);
+            builder.setTitle("Hata!");
+            builder.setMessage("Şifreniz En Az 6 Karakter Olmalı.");
+
+            builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                }
+            });
+            builder.show();
+        }
+        else
+            register(createAccountEmail, createAccountPassword, createAccountConfirmPassword);
     }
 
     private void register(final String createAccountEmail, final String createAccountPassword, String createAccountConfirmPassword) {
