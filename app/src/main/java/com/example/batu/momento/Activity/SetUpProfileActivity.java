@@ -61,10 +61,10 @@ public class SetUpProfileActivity extends AppCompatActivity {
         }
         else{
             HashMap userMap = new HashMap();
-            userMap.put("FullName",userFullName);
-            userMap.put("Birthday",userBirthday);
-            userMap.put("Gender",userGender);
-            userMap.put("About",userAbout);
+            userMap.put("fullName",userFullName);
+            userMap.put("birthday",userBirthday);
+            userMap.put("gender",userGender);
+            userMap.put("about",userAbout);
             //userMap.put("FullName",userFullName);
            // userMap.put("FullName",userFullName);
             userReference.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener() {

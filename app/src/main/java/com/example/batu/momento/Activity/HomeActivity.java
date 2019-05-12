@@ -58,6 +58,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         UserNavigationHeader();
 
 
+
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
@@ -78,8 +79,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    String fullName = dataSnapshot.child("FullName").getValue().toString();
-                    String eMail = dataSnapshot.child("Email").getValue().toString();
+                    String fullName = dataSnapshot.child("fullName").getValue().toString();
+                    String eMail = dataSnapshot.child("eMail").getValue().toString();
 
                     userFullName.setText(fullName);
                     userEmail.setText(eMail);

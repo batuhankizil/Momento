@@ -1,5 +1,6 @@
 <layout>
 
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,10 +16,10 @@
 
             <ImageView
                 android:id="@+id/user_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_launcher_round" />
+                android:src="@drawable/icon_user_profile" />
 
             <TextView
                 android:id="@+id/user_full_name"

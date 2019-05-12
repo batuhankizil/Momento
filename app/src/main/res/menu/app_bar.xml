@@ -8,5 +8,10 @@
         android:title="search"
         app:showAsAction="ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
+    <item
+    android:id="@+id/nav_settings"
+    android:icon="@mipmap/icon_search_button"
+    android:title="settings" />
+
 
 </menu>

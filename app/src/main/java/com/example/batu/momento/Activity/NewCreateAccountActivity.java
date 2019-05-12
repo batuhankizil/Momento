@@ -7,15 +7,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.batu.momento.Fragment.FragmentCommentOptionsDialog;
-import com.example.batu.momento.Fragment.FragmentProfile;
 import com.example.batu.momento.R;
 import com.example.batu.momento.databinding.ActivityCreateAccountBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.EmailAuthCredential;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -58,6 +54,9 @@ public class NewCreateAccountActivity extends AppCompatActivity {
         String createAccountEmail = binding.createAccountEmail.getText().toString();
         String createAccountPassword = binding.createAccountPassword.getText().toString();
         String createAccountConfirmPassword = binding.createAccountConfirmPassword.getText().toString();
+
+        /*Users users = new Users();
+        users.eMail = binding.createAccountEmail.getText().toString();*/
 
         if (TextUtils.isEmpty(createAccountEmail) || TextUtils.isEmpty(createAccountPassword) || TextUtils.isEmpty(createAccountConfirmPassword)) {
             //Toast.makeText(NewCreateAccountActivity.this, "Alanlar Boş Bırakılamaz!", Toast.LENGTH_SHORT).show();
@@ -111,8 +110,8 @@ public class NewCreateAccountActivity extends AppCompatActivity {
                             reference = FirebaseDatabase.getInstance().getReference().child("Users").child(userid);
 
                             HashMap<String, Object> hashMap = new HashMap<>();
-                            hashMap.put("Email", createAccountEmail.toLowerCase());
-                            hashMap.put("Sifre", createAccountPassword);
+                            hashMap.put("eMail", createAccountEmail.toLowerCase());
+                            hashMap.put("password", createAccountPassword);
 
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

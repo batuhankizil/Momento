@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.batu.momento.Model.Users;
 import com.example.batu.momento.R;
 import com.example.batu.momento.Utils.PreferenceUtils;
 import com.example.batu.momento.databinding.ActivitySignInBinding;
@@ -13,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -75,8 +77,17 @@ public class SignInActivity extends AppCompatActivity {
                                         /*Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);*/
+
+                                       /* Users user = new Users();
+                                        user.seteMail(dataSnapshot.child(eMail).getValue(Users.class).geteMail());*/
+                                        //user.fullName(dataSnapshot.child());
+
+
+
+
                                         PreferenceUtils.saveEmail(eMail, getApplicationContext());
                                         PreferenceUtils.savePassword(password, getApplicationContext());
+
                                         Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
                                         homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         homeIntent.putExtra("eMail", binding.userEmail.getText().toString().trim());
