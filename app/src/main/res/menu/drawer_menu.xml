@@ -16,9 +16,9 @@
             android:icon="@mipmap/icon_chat"
             android:title="@string/chat" />
         <item
-            android:id="@+id/nav_notification"
-            android:icon="@mipmap/icon_notification"
-            android:title="@string/notifications" />
+            android:id="@+id/nav_search"
+            android:icon="@mipmap/icon_search_button"
+            android:title="@string/search" />
         <item
             android:id="@+id/nav_saved"
             android:icon="@mipmap/icon_saved"

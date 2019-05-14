@@ -47,4 +47,5 @@
     <string name="settings">Ayarlar</string>
     <string name="log_out">Çıkış Yap</string>
     <string name="home_button">Anasayfa</string>
+    <string name="search">Arama</string>
 </resources>

@@ -50,7 +50,7 @@ public class NewCreateAccountActivity extends AppCompatActivity {
         });
     }
 
-    private void SetupProfileIntent(){
+    private void SetupProfileIntent() {
         String createAccountEmail = binding.createAccountEmail.getText().toString();
         String createAccountPassword = binding.createAccountPassword.getText().toString();
         String createAccountConfirmPassword = binding.createAccountConfirmPassword.getText().toString();
@@ -70,8 +70,7 @@ public class NewCreateAccountActivity extends AppCompatActivity {
             });
             builder.show();
 
-        }
-        else if (!createAccountPassword.equals(createAccountConfirmPassword)){
+        } else if (!createAccountPassword.equals(createAccountConfirmPassword)) {
             //Toast.makeText(NewCreateAccountActivity.this, "Şifreler Uyuşmuyor!", Toast.LENGTH_SHORT).show();
             AlertDialog.Builder builder = new AlertDialog.Builder(NewCreateAccountActivity.this);
             builder.setTitle("Hata!");
@@ -82,8 +81,7 @@ public class NewCreateAccountActivity extends AppCompatActivity {
                 }
             });
             builder.show();
-        }
-        else if (createAccountPassword.length() < 6){
+        } else if (createAccountPassword.length() < 6) {
             AlertDialog.Builder builder = new AlertDialog.Builder(NewCreateAccountActivity.this);
             builder.setTitle("Hata!");
             builder.setMessage("Şifreniz En Az 6 Karakter Olmalı.");
@@ -93,8 +91,7 @@ public class NewCreateAccountActivity extends AppCompatActivity {
                 }
             });
             builder.show();
-        }
-        else
+        } else
             register(createAccountEmail, createAccountPassword, createAccountConfirmPassword);
     }
 

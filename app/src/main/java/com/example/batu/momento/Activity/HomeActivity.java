@@ -12,6 +12,7 @@ import com.example.batu.momento.Fragment.FragmentChats;
 import com.example.batu.momento.Fragment.FragmentHome;
 import com.example.batu.momento.Fragment.FragmentProfile;
 import com.example.batu.momento.Fragment.FragmentSaved;
+import com.example.batu.momento.Fragment.FragmentSearch;
 import com.example.batu.momento.R;
 import com.example.batu.momento.Utils.PreferenceUtils;
 import com.example.batu.momento.databinding.ActivityHomeBinding;
@@ -145,7 +146,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         .replace(R.id.fragment_container, new FragmentChats())
                         .commit();
                 break;
-            case R.id.nav_notification:
+            case R.id.nav_search:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.fragment_container, new FragmentSearch())
+                        .commit();
                 break;
             case R.id.nav_saved:
                 getSupportFragmentManager()

@@ -63,8 +63,8 @@ public class FragmentProfile extends Fragment {
                     mDatabase.child(firebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            binding.fullName.setText(String.valueOf(dataSnapshot.child("FullName").getValue()));
-                            binding.about.setText(String.valueOf(dataSnapshot.child("About").getValue()));
+                            binding.fullName.setText(String.valueOf(dataSnapshot.child("fullName").getValue()));
+                            binding.about.setText(String.valueOf(dataSnapshot.child("about").getValue()));
                         }
 
                         @Override
