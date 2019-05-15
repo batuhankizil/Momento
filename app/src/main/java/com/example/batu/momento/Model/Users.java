@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Users implements Serializable {
     public String userId;
-    @SerializedName("Email")
     public String eMail;
     public String profilePhoto;
     public String fullName;
@@ -15,6 +14,7 @@ public class Users implements Serializable {
     public String gender;
     public String about;
     public List<Followers> followersList;
+
 
     public String getUserId() {
         return userId;
