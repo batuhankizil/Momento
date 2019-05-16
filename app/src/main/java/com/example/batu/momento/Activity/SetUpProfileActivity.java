@@ -65,8 +65,7 @@ public class SetUpProfileActivity extends AppCompatActivity {
             userMap.put("birthday",userBirthday);
             userMap.put("gender",userGender);
             userMap.put("about",userAbout);
-            //userMap.put("FullName",userFullName);
-           // userMap.put("FullName",userFullName);
+            userMap.put("profilePhoto","https://firebasestorage.googleapis.com/v0/b/momento-application.appspot.com/o/icon_user_profile.png?alt=media&token=bebe08bf-8950-431f-908f-06160abd41f4");
             userReference.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener() {
                 @Override
                 public void onComplete(@NonNull Task task) {

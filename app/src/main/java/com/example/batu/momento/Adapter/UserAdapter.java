@@ -62,9 +62,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         Glide.with(mContext).load(users.getProfilePhoto()).into(holder.userProfileImage);
         beingFollowed(users.getUserId(),holder.userFollow);
 
-        /*if (users.getUserId().equals(firebaseUser.getUid())){
+        if (users.getUserId().equals(firebaseUser.getUid())){
             holder.userFollow.setVisibility(View.GONE);
-        }*/
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,14 +90,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
                     FirebaseDatabase.getInstance().getReference().child("follow").child(firebaseUser.getUid())
                             .child("following").child(users.getUserId()).setValue(true);
 
-                    FirebaseDatabase.getInstance().getReference().child("follow").child(firebaseUser.getUid())
+                    FirebaseDatabase.getInstance().getReference().child("follow").child(users.getUserId())
                             .child("followers").child(firebaseUser.getUid()).setValue(true);
                 } else {
 
                     FirebaseDatabase.getInstance().getReference().child("follow").child(firebaseUser.getUid())
                             .child("following").child(users.getUserId()).removeValue();
 
-                    FirebaseDatabase.getInstance().getReference().child("follow").child(firebaseUser.getUid())
+                    FirebaseDatabase.getInstance().getReference().child("follow").child(users.getUserId())
                             .child("followers").child(firebaseUser.getUid()).removeValue();
                 }
             }
@@ -131,11 +131,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         userFollowWay.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                /*if (dataSnapshot.child(userId).exists()){
+                if (dataSnapshot.child(userId).exists()){
                     userFollow.setText("Takip Ediliyor");
                 }else {
                     userFollow.setText("Takip Et");
-                }*/
+                }
             }
 
             @Override

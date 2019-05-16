@@ -53,7 +53,7 @@ public class FragmentSearch extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                userSearch(s.toString().toLowerCase());
+                userSearch(s.toString());
             }
 
             @Override

@@ -74,16 +74,10 @@ public class SignInActivity extends AppCompatActivity {
                                 reference.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        /*Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        startActivity(intent);*/
 
-                                       /* Users user = new Users();
+                                        /*Users user = new Users();
                                         user.seteMail(dataSnapshot.child(eMail).getValue(Users.class).geteMail());*/
                                         //user.fullName(dataSnapshot.child());
-
-
-
 
                                         PreferenceUtils.saveEmail(eMail, getApplicationContext());
                                         PreferenceUtils.savePassword(password, getApplicationContext());

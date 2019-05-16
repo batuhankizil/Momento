@@ -109,6 +109,7 @@ public class NewCreateAccountActivity extends AppCompatActivity {
                             HashMap<String, Object> hashMap = new HashMap<>();
                             hashMap.put("eMail", createAccountEmail.toLowerCase());
                             hashMap.put("password", createAccountPassword);
+                            hashMap.put("userId", userid);
 
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

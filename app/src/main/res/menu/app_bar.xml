@@ -3,15 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/nav_search"
-        android:icon="@mipmap/icon_search_button"
-        android:title="search"
-        app:showAsAction="ifRoom"
-        app:actionViewClass="androidx.appcompat.widget.SearchView" />
-    <item
     android:id="@+id/nav_settings"
     android:icon="@mipmap/icon_search_button"
-    android:title="settings" />
-
+    android:title="Profili Düzenle"/>
 
 </menu>

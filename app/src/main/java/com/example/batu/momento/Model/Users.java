@@ -15,6 +15,19 @@ public class Users implements Serializable {
     public String about;
     public List<Followers> followersList;
 
+    public Users(){
+
+    }
+
+    public Users(String userId, String eMail, String profilePhoto, String fullName, String birtday, String gender, String about) {
+        this.userId = userId;
+        this.eMail = eMail;
+        this.profilePhoto = profilePhoto;
+        this.fullName = fullName;
+        this.birtday = birtday;
+        this.gender = gender;
+        this.about = about;
+    }
 
     public String getUserId() {
         return userId;
