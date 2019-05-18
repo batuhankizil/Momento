@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.TextView;
 
 
+import com.example.batu.momento.CommunicationInterface;
 import com.example.batu.momento.Fragment.FragmentChats;
+import com.example.batu.momento.Fragment.FragmentEditProfile;
 import com.example.batu.momento.Fragment.FragmentHome;
 import com.example.batu.momento.Fragment.FragmentProfile;
 import com.example.batu.momento.Fragment.FragmentSaved;
@@ -31,7 +33,7 @@ import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, CommunicationInterface {
 
     private ActivityHomeBinding binding;
 
@@ -66,6 +68,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     .commit();
             binding.navView.setCheckedItem(R.id.nav_home_button);
         }
+    }
+
+    @Override
+    public void openEditProfileFragment() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.full_container, new FragmentEditProfile())
+                .addToBackStack(null)
+                .commit();
     }
 
     private void UserNavigationHeader() {

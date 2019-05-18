@@ -2,9 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <item
-    android:id="@+id/nav_settings"
-    android:icon="@mipmap/icon_search_button"
-    android:title="Profili Düzenle"/>
+        android:id="@+id/nav_edit_profile"
+        android:title="Edit Profile"
+        android:icon="@drawable/ic_settings"
+        app:showAsAction="ifRoom" />
 
 </menu>
