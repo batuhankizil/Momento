@@ -6,7 +6,7 @@
     <item
         android:id="@+id/nav_edit_profile"
         android:title="Edit Profile"
-        android:icon="@drawable/ic_settings"
+        android:icon="@drawable/icon_edit_profile"
         app:showAsAction="ifRoom" />
 
 </menu>
