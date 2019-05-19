@@ -37,7 +37,7 @@ public class FragmentProfile extends Fragment {
     private DatabaseReference mDatabase;
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(authListener);
     }
@@ -47,6 +47,7 @@ public class FragmentProfile extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false);
 
         setHasOptionsMenu(true);
+        createPostButton();
 
         return binding.getRoot();
 
@@ -62,15 +63,15 @@ public class FragmentProfile extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_edit_profile:
-                Toast.makeText(getActivity(),"Clicked",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_LONG).show();
 //                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
 //                ft.replace(R.id.full, new FragmentEditProfile());
 //                ft.addToBackStack(null);
 //                ft.commit();
 
-                CommunicationInterface communicationInterface = (CommunicationInterface)getActivity();
+                CommunicationInterface communicationInterface = (CommunicationInterface) getActivity();
                 communicationInterface.openEditProfileFragment();
 
         }
@@ -83,7 +84,19 @@ public class FragmentProfile extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private void userProfileInformation(){
+    private void createPostButton() {
+        binding.createPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.full_container, new FragmentCreatePost());
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
+    }
+
+    private void userProfileInformation() {
         mAuth = FirebaseAuth.getInstance();
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override
