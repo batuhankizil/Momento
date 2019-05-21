@@ -20,12 +20,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class FragmentHome extends Fragment {
 
-    private UserPostLayoutBinding binding;
+    private FragmentHomeBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater,R.layout.user_post_layout, container, false);
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false);
 
         return binding.getRoot();
 
@@ -36,15 +36,7 @@ public class FragmentHome extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        binding.commentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.fragment_container, new FragmentComments());
-                ft.addToBackStack(null);
-                ft.commit();
-            }
-        });
+
 
     }
 

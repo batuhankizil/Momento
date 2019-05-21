@@ -5,12 +5,14 @@
         android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/user_post_picture"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_margin="10dp"
                 android:src="@drawable/logo_app" />
 
             <TextView
+                android:id="@+id/user_post_about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -22,32 +24,34 @@
                 android:padding="10dp">
 
                 <ImageView
-                    android:id="@+id/user_profile"
+                    android:id="@+id/user_profile_photo"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_centerVertical="true"
                     android:src="@drawable/icon_user_profile" />
 
                 <TextView
-                    android:id="@+id/user_name"
+                    android:id="@+id/user_full_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@+id/user_profile"
+                    android:layout_toEndOf="@+id/user_profile_photo"
                     android:text="Batuhan Kızıl"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/user_post_timer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/user_name"
+                    android:layout_below="@+id/user_full_name"
                     android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@+id/user_profile"
+                    android:layout_toEndOf="@+id/user_profile_photo"
                     android:text="10 DAKİKA ÖNCE"
                     android:textSize="10sp" />
 
                 <TextView
+                    android:id="@+id/post_like_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"

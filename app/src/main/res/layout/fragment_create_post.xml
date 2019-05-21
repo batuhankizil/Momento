@@ -31,7 +31,7 @@
                 android:src="@drawable/icon_user_profile" />
 
             <EditText
-                android:id="@+id/explanation"
+                android:id="@+id/about"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"

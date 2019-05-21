@@ -3,21 +3,12 @@
         xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
         android:layout_height="match_parent" android:orientation="vertical">
 
-        <TextView
-            android:layout_marginTop="300dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/user_posts"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Home Fragment"
-            android:textSize="30sp"
-            android:gravity="center"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/comments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Yorumlar"
-            android:layout_gravity="center_horizontal"/>
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 </layout>
