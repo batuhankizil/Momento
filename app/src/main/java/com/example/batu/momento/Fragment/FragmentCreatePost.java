@@ -15,7 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.batu.momento.Activity.HomeActivity;
 import com.example.batu.momento.R;
 import com.example.batu.momento.databinding.FragmentCreatePostBinding;
 import com.google.android.gms.tasks.Continuation;
@@ -134,12 +136,12 @@ public class FragmentCreatePost extends Fragment {
 
                         progressDialog.dismiss();
 
-                        //homepage
-                        //finish();
+                        startHomePage();
+
                     } else {
                         Toast.makeText(getActivity(), "Gönderi Paylaşılamadı.", Toast.LENGTH_SHORT).show();
-                        //homepage
-                        //finish();
+
+                        startHomePage();
                     }
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -152,5 +154,10 @@ public class FragmentCreatePost extends Fragment {
             Toast.makeText(getActivity(), "Seçilen Resim Yok.", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void startHomePage(){
+        Intent intent = new Intent(getContext(), HomeActivity.class);
+        startActivity(intent);
     }
 }

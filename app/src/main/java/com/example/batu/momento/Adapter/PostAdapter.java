@@ -54,7 +54,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         Post post = mPost.get(position);
-        Glide.with(mContext).load(post.getPostSender()).into(holder.userPostPicture);
+        Glide.with(mContext).load(post.getPostPicture()).into(holder.userPostPicture);
 
         if (post.getPostAbout().equals("")){
             holder.userPostAbout.setVisibility(View.GONE);
@@ -80,6 +80,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
 
+            userProfilePhoto = itemView.findViewById(R.id.user_profile_photo);
             userPostPicture = itemView.findViewById(R.id.user_post_picture);
             userPostAbout = itemView.findViewById(R.id.user_post_about);
             userFullName = itemView.findViewById(R.id.user_full_name);

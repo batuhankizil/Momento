@@ -1,14 +1,14 @@
 <layout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/user_post_picture"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:src="@drawable/logo_app" />
 
             <TextView
@@ -47,7 +47,7 @@
                     android:layout_below="@+id/user_full_name"
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@+id/user_profile_photo"
-                    android:text="10 DAKİKA ÖNCE"
+                    android:text="0 DAKİKA ÖNCE"
                     android:textSize="10sp" />
 
                 <TextView
@@ -57,7 +57,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="8dp"
                     android:layout_toStartOf="@id/like_button"
-                    android:text="210" />
+                    android:text="0" />
 
                 <Button
                     android:id="@+id/like_button"
