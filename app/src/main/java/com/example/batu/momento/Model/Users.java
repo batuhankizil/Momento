@@ -16,16 +16,17 @@ public class Users implements Serializable {
     public String birtday;
     public String gender;
     public String about;
+    private transient String password;
 
-    public Users getUser(Context context){
+    /*public Users getUser(Context context){
         return PreferenceUtils.instance.getSavedObjectFromPreference(context,"user", Users.class);
-    }
+    }*/
 
     public Users(){
 
     }
 
-    public Users(String userId, String eMail, String profilePhoto, String fullName, String birtday, String gender, String about) {
+    public Users(String userId, String eMail, String profilePhoto, String fullName, String birtday, String gender, String about, String password) {
         this.userId = userId;
         this.eMail = eMail;
         this.profilePhoto = profilePhoto;
@@ -33,6 +34,15 @@ public class Users implements Serializable {
         this.birtday = birtday;
         this.gender = gender;
         this.about = about;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUserId() {

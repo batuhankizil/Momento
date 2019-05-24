@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -91,14 +92,25 @@ public class SignInActivity extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                                        Users user = new Users();
+                                        /*Users user = new Users();
                                         user.seteMail(dataSnapshot.child("eMail").getValue().toString());
                                         user.setFullName(dataSnapshot.child("fullName").getValue().toString());
                                         user.setAbout(dataSnapshot.child("about").getValue().toString());
                                         user.setBirtday(dataSnapshot.child("birthday").getValue().toString());
                                         user.setGender(dataSnapshot.child("gender").getValue().toString());
                                         user.setProfilePhoto(dataSnapshot.child("profilePhoto").getValue().toString());
-                                        user.setUserId(dataSnapshot.child("userId").getValue().toString());
+                                        user.setUserId(dataSnapshot.child("userId").getValue().toString());*/
+
+
+                                        Gson gson = new Gson();
+                                        Users user = new Users();
+
+                                        String jsonObject = gson.toJson(user);
+
+                                        /*SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString(USER_SERVICE, jsonObject);
+                                        editor.apply();*/
 
                                         /*SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                                         SharedPreferences.Editor editor = preferences.edit();
@@ -106,7 +118,7 @@ public class SignInActivity extends AppCompatActivity {
                                         editor.putString("fullname",user.fullName);
                                         editor.apply();*/
 
-                                        PreferenceUtils.instance.saveObject(getApplicationContext(),"user",user);
+                                        /*PreferenceUtils.instance.saveObject(getApplicationContext(),"user",user);*/
                                         /*Users user = new Users();
                                         user.getUser(getApplicationContext());*/
 

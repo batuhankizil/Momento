@@ -34,16 +34,18 @@ public class FragmentEditProfile extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        /*SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String fullname = preferences.getString("fullname",user.fullName);
 
-        binding.fullName.setText(fullname);*/
-
-        Users user = new Users();
+        /*Users user = new Users();
         user.getUser(getContext());
-        binding.fullName.setText(user.fullName);
+        binding.fullName.setText(user.fullName);*/
 
-        //binding.fullName.setText(user.fullName);
+
+        /*SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String fullname = preferences.getString("fullname",user.fullName);*/
+
+       /* binding.fullName.setText(fullname);
+
+        binding.fullName.setText(user.fullName);*/
 
     }
 }

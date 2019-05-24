@@ -3,8 +3,6 @@ package com.example.batu.momento.Utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
-import com.example.batu.momento.Model.Users;
 import com.google.gson.Gson;
 
 import java.io.Serializable;
@@ -14,14 +12,14 @@ public class PreferenceUtils {
 
     }
 
-    public static final PreferenceUtils instance = new PreferenceUtils();
+  /*  public static final PreferenceUtils instance = new PreferenceUtils();
 
     public void saveObject(Context context, String serializedObjectKey, Serializable obj){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
         final Gson gson = new Gson();
-        /*String serializedObject = gson.toJson(obj);
-        sharedPreferencesEditor.putString(serializedObjectKey, serializedObject);*/
+        String serializedObject = gson.toJson(obj);
+        sharedPreferencesEditor.putString(serializedObjectKey, serializedObject);
         sharedPreferencesEditor.apply();
     }
 
@@ -32,7 +30,7 @@ public class PreferenceUtils {
             return gson.fromJson(sharedPreferences.getString(preferenceKey, ""), classType);
         }
         return null;
-    }
+    }*/
     public static boolean saveEmail(String email, Context context){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor prefsEditor = prefs.edit();
