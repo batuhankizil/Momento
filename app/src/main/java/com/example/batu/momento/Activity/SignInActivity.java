@@ -1,8 +1,11 @@
 package com.example.batu.momento.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -25,9 +28,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+
 public class SignInActivity extends AppCompatActivity {
 
     private ActivitySignInBinding binding;
+
+    private String userId;
 
     FirebaseAuth auth;
 
@@ -56,6 +62,16 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 
+    /*private void showData(DataSnapshot dataSnapshot){
+        Users user = new Users();
+
+        //user = dataSnapshot.getValue(Users.class);
+
+        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+            user.seteMail(ds.child(dataSnapshot.getKey()).getValue(Users.class).geteMail());
+        }
+    }*/
+
     public void LoginControl() {
         final String eMail = binding.userEmail.getText().toString();
         final String password = binding.userPassword.getText().toString();
@@ -66,7 +82,7 @@ public class SignInActivity extends AppCompatActivity {
             auth.signInWithEmailAndPassword(eMail, password)
                     .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+                        public void onComplete(@NonNull final Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users")
                                         .child(auth.getCurrentUser().getUid());
@@ -75,9 +91,24 @@ public class SignInActivity extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                                        Users user = new Users();
+                                        user.seteMail(dataSnapshot.child("eMail").getValue().toString());
+                                        user.setFullName(dataSnapshot.child("fullName").getValue().toString());
+                                        user.setAbout(dataSnapshot.child("about").getValue().toString());
+                                        user.setBirtday(dataSnapshot.child("birthday").getValue().toString());
+                                        user.setGender(dataSnapshot.child("gender").getValue().toString());
+                                        user.setProfilePhoto(dataSnapshot.child("profilePhoto").getValue().toString());
+                                        user.setUserId(dataSnapshot.child("userId").getValue().toString());
+
+                                        /*SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                        SharedPreferences.Editor editor = preferences.edit();
+
+                                        editor.putString("fullname",user.fullName);
+                                        editor.apply();*/
+
+                                        PreferenceUtils.instance.saveObject(getApplicationContext(),"user",user);
                                         /*Users user = new Users();
-                                        user.seteMail(dataSnapshot.child(eMail).getValue(Users.class).geteMail());*/
-                                        //user.fullName(dataSnapshot.child());
+                                        user.getUser(getApplicationContext());*/
 
                                         PreferenceUtils.saveEmail(eMail, getApplicationContext());
                                         PreferenceUtils.savePassword(password, getApplicationContext());
@@ -94,12 +125,19 @@ public class SignInActivity extends AppCompatActivity {
 
                                     }
                                 });
+
                             } else
                                 Toast.makeText(SignInActivity.this, "Giriş Başarısız.", Toast.LENGTH_SHORT).show();
 
+
                         }
                     });
+
         }
     }
+
+    /*private void showMainActivity(Users user){
+        PreferenceUtils.instance.saveObject(getApplicationContext(),"user",user);
+    }*/
 
 }

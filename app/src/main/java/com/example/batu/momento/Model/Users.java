@@ -1,5 +1,8 @@
 package com.example.batu.momento.Model;
 
+import android.content.Context;
+
+import com.example.batu.momento.Utils.PreferenceUtils;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -13,7 +16,10 @@ public class Users implements Serializable {
     public String birtday;
     public String gender;
     public String about;
-    public List<Followers> followersList;
+
+    public Users getUser(Context context){
+        return PreferenceUtils.instance.getSavedObjectFromPreference(context,"user", Users.class);
+    }
 
     public Users(){
 

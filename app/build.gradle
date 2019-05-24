@@ -77,6 +77,10 @@ dependencies {
         transitive = false
     }
 
+    //Gson
+    //implementation 'com.google.code.gson:gson:2.8.5'
+    implementation "com.squareup.retrofit2:retrofit:$project.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$project.retrofit"
     // Circle Image View
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     // Database Image Insert

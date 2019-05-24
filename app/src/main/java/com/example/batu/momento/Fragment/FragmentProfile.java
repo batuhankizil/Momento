@@ -28,8 +28,6 @@ public class FragmentProfile extends Fragment {
 
     private FragmentProfileBinding binding;
 
-    //View view;
-
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener authListener;
     private DatabaseReference mDatabase;
@@ -63,11 +61,6 @@ public class FragmentProfile extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_edit_profile:
-                Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_LONG).show();
-//                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-//                ft.replace(R.id.full, new FragmentEditProfile());
-//                ft.addToBackStack(null);
-//                ft.commit();
 
                 CommunicationInterface communicationInterface = (CommunicationInterface) getActivity();
                 communicationInterface.openEditProfileFragment();
