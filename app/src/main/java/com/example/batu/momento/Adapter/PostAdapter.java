@@ -1,6 +1,8 @@
 package com.example.batu.momento.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.batu.momento.Fragment.FragmentComments;
+import com.example.batu.momento.Fragment.FragmentCreatePost;
 import com.example.batu.momento.Model.Post;
 import com.example.batu.momento.Model.Users;
 import com.example.batu.momento.R;
@@ -50,10 +57,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        Post post = mPost.get(position);
+        final Post post = mPost.get(position);
         Glide.with(mContext).load(post.getPostPicture()).into(holder.userPostPicture);
 
         if (post.getPostAbout().equals("")){
@@ -64,6 +71,53 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         }
 
         postSender(holder.userProfilePhoto,holder.userFullName,post.getPostSender());
+
+        likes(post.getPostId(), holder.likeButton);
+        likeNumber(holder.postLikeNumber, post.getPostId());
+
+        //comments(post.getPostId(),holder.commentButton);
+
+        holder.likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.likeButton.getTag().equals("Beğen")){
+                    FirebaseDatabase.getInstance().getReference().child("likes").child(post.getPostId())
+                            .child(firebaseUser.getUid()).setValue(true);
+                } else {
+                    FirebaseDatabase.getInstance().getReference().child("likes").child(post.getPostId())
+                            .child(firebaseUser.getUid()).removeValue();
+                }
+            }
+        });
+
+        holder.commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                FragmentTransaction ft = activity.getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.fragment_container, new FragmentComments());
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
+    }
+
+    private void comments(String commentId, final TextView comment){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("comments").child(commentId);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //comments.setText(dataSnapshot.getChildrenCount() + " Yorumu gör.");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -73,9 +127,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        public ImageView userProfilePhoto,userPostPicture;
+        public ImageView userProfilePhoto,userPostPicture,likeButton;
         public TextView userPostAbout,userFullName,postLikeNumber;
-        public Button likeButton,commentButton;
+        public Button commentButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -88,6 +142,55 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             likeButton = itemView.findViewById(R.id.like_button);
             commentButton = itemView.findViewById(R.id.comment_button);
         }
+    }
+
+
+    private void likes(String postId, final ImageView imageView){
+
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference()
+                .child("likes")
+                .child(postId);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child(firebaseUser.getUid()).exists()){
+                    imageView.setImageResource(R.drawable.ic_liked);
+                    imageView.setTag("Beğenildi");
+                } else {
+                    imageView.setImageResource(R.drawable.ic_like);
+                    imageView.setTag("Beğen");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void likeNumber(final TextView likes, String postId){
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference()
+                .child("likes")
+                .child(postId);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                likes.setText(dataSnapshot.getChildrenCount() + " ");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void postSender(final ImageView userProfilePhoto, final TextView userFullName, String userId){

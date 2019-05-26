@@ -92,20 +92,31 @@ public class SignInActivity extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                                        /*Users user = new Users();
+                                        Users user = new Users();
                                         user.seteMail(dataSnapshot.child("eMail").getValue().toString());
                                         user.setFullName(dataSnapshot.child("fullName").getValue().toString());
                                         user.setAbout(dataSnapshot.child("about").getValue().toString());
                                         user.setBirtday(dataSnapshot.child("birthday").getValue().toString());
                                         user.setGender(dataSnapshot.child("gender").getValue().toString());
                                         user.setProfilePhoto(dataSnapshot.child("profilePhoto").getValue().toString());
-                                        user.setUserId(dataSnapshot.child("userId").getValue().toString());*/
+                                        user.setUserId(dataSnapshot.child("userId").getValue().toString());
+
+                                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("email", user.eMail);
+                                        editor.putString("fullname", user.fullName);
+                                        editor.putString("about", user.about);
+                                        editor.putString("birtday", user.birtday);
+                                        editor.putString("gender", user.gender);
+                                        editor.putString("profilephoto", user.profilePhoto);
+                                        editor.putString("userid", user.userId);
+                                        editor.apply();
 
 
-                                        Gson gson = new Gson();
+                                        /*Gson gson = new Gson();
                                         Users user = new Users();
 
-                                        String jsonObject = gson.toJson(user);
+                                        String jsonObject = gson.toJson(user);*/
 
                                         /*SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                                         SharedPreferences.Editor editor = sharedPreferences.edit();

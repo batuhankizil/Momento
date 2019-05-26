@@ -16,12 +16,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Harika bir fotoğraf" />
+                android:text="Harika bir fotoğraf"
+                android:textColor="@color/page_title"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp">
 
                 <ImageView
                     android:id="@+id/user_profile_photo"
@@ -38,7 +41,8 @@
                     android:layout_toEndOf="@+id/user_profile_photo"
                     android:text="Batuhan Kızıl"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/page_title"/>
 
                 <TextView
                     android:id="@+id/user_post_timer"
@@ -55,18 +59,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="2dp"
                     android:layout_toStartOf="@id/like_button"
-                    android:text="0" />
+                    android:text="0"
+                    android:textColor="@color/page_title"/>
 
-                <Button
+                <ImageView
                     android:id="@+id/like_button"
                     android:layout_width="20dp"
                     android:layout_height="18dp"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="10dp"
-                    android:layout_toStartOf="@+id/comment_button"
-                    android:background="@mipmap/icon_notification" />
+                    android:layout_toStartOf="@+id/comment_button" />
 
                 <Button
                     android:id="@+id/comment_button"
