@@ -3,6 +3,8 @@ package com.example.batu.momento.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,8 +77,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         likes(post.getPostId(), holder.likeButton);
         likeNumber(holder.postLikeNumber, post.getPostId());
 
-        //comments(post.getPostId(),holder.commentButton);
-
         holder.likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,28 +94,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
 
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("postId", post.postId);
+                editor.apply();
 
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 FragmentTransaction ft = activity.getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.fragment_container, new FragmentComments());
                 ft.addToBackStack(null);
                 ft.commit();
-            }
-        });
-    }
-
-    private void comments(String commentId, final TextView comment){
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("comments").child(commentId);
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //comments.setText(dataSnapshot.getChildrenCount() + " Yorumu gör.");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }

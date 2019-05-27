@@ -1,20 +1,27 @@
 package com.example.batu.momento.Fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.batu.momento.Model.Post;
 import com.example.batu.momento.R;
 import com.example.batu.momento.databinding.FragmentCommentsBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,10 +47,10 @@ public class FragmentComments extends Fragment {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        /*Intent intent = getActivity().getIntent();
+        Intent intent = getActivity().getIntent();
 
-        postId = intent.getStringExtra("commentId");
-        senderId = intent.getStringExtra("senderId");*/
+        postId = intent.getStringExtra("postId");
+        senderId = intent.getStringExtra("senderId");
 
         binding.commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,11 +72,33 @@ public class FragmentComments extends Fragment {
         super.onActivityCreated(savedInstanceState);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Yorumlar");
 
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("comments");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                binding.commentNumber.setText(dataSnapshot.getChildrenCount() + " Yorum");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void comments(String postId, TextView commentNumber){
 
     }
 
     private void addComment(){
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("comments");
+
+        Post post = new Post();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String postId = preferences.getString("postId",post.postId);
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("comments").child(postId);
 
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("comment", binding.addComment.getText().toString());

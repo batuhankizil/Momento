@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.batu.momento.Model.Post;
 import com.example.batu.momento.Model.Users;
 import com.example.batu.momento.R;
 import com.example.batu.momento.Utils.PreferenceUtils;
@@ -111,7 +112,6 @@ public class SignInActivity extends AppCompatActivity {
                                         editor.putString("profilephoto", user.profilePhoto);
                                         editor.putString("userid", user.userId);
                                         editor.apply();
-
 
                                         /*Gson gson = new Gson();
                                         Users user = new Users();
