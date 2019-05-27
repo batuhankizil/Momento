@@ -35,7 +35,7 @@ public class FragmentComments extends Fragment {
 
     private FragmentCommentsBinding binding;
 
-    String postId;
+    //String postId;
     String senderId;
 
     FirebaseUser firebaseUser;
@@ -47,10 +47,10 @@ public class FragmentComments extends Fragment {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        Intent intent = getActivity().getIntent();
+        /*Intent intent = getActivity().getIntent();
 
         postId = intent.getStringExtra("postId");
-        senderId = intent.getStringExtra("senderId");
+        senderId = intent.getStringExtra("senderId");*/
 
         binding.commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +72,11 @@ public class FragmentComments extends Fragment {
         super.onActivityCreated(savedInstanceState);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Yorumlar");
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("comments");
+        Post post = new Post();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String postId = preferences.getString("postId",post.postId);
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("comments").child(postId);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
