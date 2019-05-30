@@ -52,7 +52,7 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.app_name);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.application_name);
 
         userProfileInformation();
     }

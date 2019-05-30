@@ -26,8 +26,8 @@
             android:id="@+id/comment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/comment_number_layout"
-            android:layout_above="@+id/add_comment_layout">
+            android:layout_above="@+id/add_comment_layout"
+            android:layout_below="@id/comment_number_layout">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/comments"
@@ -71,7 +71,9 @@
                 android:layout_height="32dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:background="@mipmap/icon_send_button" />
+                android:alpha="0.5"
+                android:background="@mipmap/icon_send_button"
+                android:clickable="false" />
 
         </LinearLayout>
 

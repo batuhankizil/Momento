@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,8 +37,7 @@ public class FragmentComments extends Fragment {
 
     private FragmentCommentsBinding binding;
 
-    //String postId;
-    String senderId;
+    //String senderId;
 
     FirebaseUser firebaseUser;
 
@@ -47,16 +48,12 @@ public class FragmentComments extends Fragment {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        /*Intent intent = getActivity().getIntent();
-
-        postId = intent.getStringExtra("postId");
-        senderId = intent.getStringExtra("senderId");*/
 
         binding.commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (binding.addComment.getText().toString().equals("")){
-                    Toast.makeText(getContext(), "Pasif buton ekle...", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Pasif buton ekle...", Toast.LENGTH_SHORT).show();
                 } else {
                     addComment();
                 }
@@ -71,6 +68,8 @@ public class FragmentComments extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Yorumlar");
+
+        binding.addComment.addTextChangedListener(commentTextWatcher);
 
         Post post = new Post();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -92,10 +91,6 @@ public class FragmentComments extends Fragment {
 
     }
 
-    private void comments(String postId, TextView commentNumber){
-
-    }
-
     private void addComment(){
 
         Post post = new Post();
@@ -112,5 +107,29 @@ public class FragmentComments extends Fragment {
         binding.addComment.setText("");
     }
 
+    private TextWatcher commentTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String comment = binding.addComment.getText().toString().trim();
+
+            binding.commentButton.setEnabled(!comment.isEmpty());
+
+            if (comment.isEmpty()){
+                binding.commentButton.setAlpha(0.5F);
+            }else {
+                binding.commentButton.setAlpha(1);
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
 }

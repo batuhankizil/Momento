@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.batu.momento.Model.Post;
@@ -35,7 +38,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private ActivitySignInBinding binding;
 
-    private String userId;
+    //private String userId;
 
     FirebaseAuth auth;
 
@@ -45,6 +48,9 @@ public class SignInActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
 
         auth = FirebaseAuth.getInstance();
+
+        binding.userEmail.addTextChangedListener(loginTextWatcher);
+        binding.userPassword.addTextChangedListener(loginTextWatcher);
 
         binding.resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,19 +70,11 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 
-    /*private void showData(DataSnapshot dataSnapshot){
-        Users user = new Users();
-
-        //user = dataSnapshot.getValue(Users.class);
-
-        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-            user.seteMail(ds.child(dataSnapshot.getKey()).getValue(Users.class).geteMail());
-        }
-    }*/
-
     public void LoginControl() {
         final String eMail = binding.userEmail.getText().toString();
         final String password = binding.userPassword.getText().toString();
+
+        binding.loginProgress.setVisibility(View.VISIBLE);
 
         if (TextUtils.isEmpty(eMail) || TextUtils.isEmpty(password)) {
             Toast.makeText(SignInActivity.this, "Lütfen Bilgilerinizi Giriniz.", Toast.LENGTH_SHORT).show();
@@ -113,26 +111,6 @@ public class SignInActivity extends AppCompatActivity {
                                         editor.putString("userid", user.userId);
                                         editor.apply();
 
-                                        /*Gson gson = new Gson();
-                                        Users user = new Users();
-
-                                        String jsonObject = gson.toJson(user);*/
-
-                                        /*SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.putString(USER_SERVICE, jsonObject);
-                                        editor.apply();*/
-
-                                        /*SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                                        SharedPreferences.Editor editor = preferences.edit();
-
-                                        editor.putString("fullname",user.fullName);
-                                        editor.apply();*/
-
-                                        /*PreferenceUtils.instance.saveObject(getApplicationContext(),"user",user);*/
-                                        /*Users user = new Users();
-                                        user.getUser(getApplicationContext());*/
-
                                         PreferenceUtils.saveEmail(eMail, getApplicationContext());
                                         PreferenceUtils.savePassword(password, getApplicationContext());
 
@@ -149,18 +127,38 @@ public class SignInActivity extends AppCompatActivity {
                                     }
                                 });
 
-                            } else
+                            } else {
                                 Toast.makeText(SignInActivity.this, "Giriş Başarısız.", Toast.LENGTH_SHORT).show();
-
-
+                                binding.loginProgress.setVisibility(View.GONE);
+                            }
                         }
                     });
 
         }
     }
 
-    /*private void showMainActivity(Users user){
-        PreferenceUtils.instance.saveObject(getApplicationContext(),"user",user);
-    }*/
+    private TextWatcher loginTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String userEmail = binding.userEmail.getText().toString().trim();
+            String userPassword = binding.userPassword.getText().toString().trim();
+
+            binding.signInHome.setEnabled(!userEmail.isEmpty() && userPassword.length() >= 6);
+            if (userEmail.isEmpty() || userPassword.length() < 6){
+                binding.signInHome.setAlpha(0.5F);
+            }else {
+                binding.signInHome.setAlpha(1);
+            }
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+        }
+    };
 
 }

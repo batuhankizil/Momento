@@ -48,18 +48,14 @@ public class FragmentHome extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false);
 
-
         userPost();
 
-
         return binding.getRoot();
-
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
     }
 
@@ -92,9 +88,7 @@ public class FragmentHome extends Fragment {
                 followList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     followList.add(snapshot.getKey());
-
                 }
-
                 postRead();
             }
 
@@ -133,7 +127,7 @@ public class FragmentHome extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("MOMENTO");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.application_name);
     }
 
 }

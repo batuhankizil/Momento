@@ -99,7 +99,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 editor.putString("postId", post.postId);
                 editor.apply();
 
-                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                AppCompatActivity activity = (AppCompatActivity) mContext;
                 FragmentTransaction ft = activity.getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.fragment_container, new FragmentComments());
                 ft.addToBackStack(null);
