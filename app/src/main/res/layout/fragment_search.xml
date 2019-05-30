@@ -16,7 +16,8 @@
             android:drawablePadding="5dp"
             android:hint="@string/search"
             android:inputType="text"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textCursorDrawable="@drawable/cursor_color" />
 
         <LinearLayout
             android:layout_width="match_parent"
