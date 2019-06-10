@@ -2,7 +2,6 @@ package com.example.batu.momento.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -14,13 +13,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.batu.momento.Fragment.FragmentComments;
-import com.example.batu.momento.Fragment.FragmentCreatePost;
 import com.example.batu.momento.Model.Post;
 import com.example.batu.momento.Model.Users;
 import com.example.batu.momento.R;

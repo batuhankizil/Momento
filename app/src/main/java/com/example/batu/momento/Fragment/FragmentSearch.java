@@ -68,7 +68,7 @@ public class FragmentSearch extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("MOMENTO");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.application_name);
 
     }
 

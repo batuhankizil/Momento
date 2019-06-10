@@ -1,6 +1,9 @@
 package com.example.batu.momento.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,16 +12,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.batu.momento.CommunicationInterface;
+import com.example.batu.momento.Model.Users;
 import com.example.batu.momento.R;
 import com.example.batu.momento.databinding.FragmentProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -32,10 +39,13 @@ public class FragmentProfile extends Fragment {
     private FirebaseAuth.AuthStateListener authListener;
     private DatabaseReference mDatabase;
 
+    private FirebaseUser firebaseUser;
+    String profileId;
+
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(authListener);
+        //mAuth.addAuthStateListener(authListener);
     }
 
     @Override
@@ -45,8 +55,46 @@ public class FragmentProfile extends Fragment {
         setHasOptionsMenu(true);
         createPostButton();
 
-        return binding.getRoot();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        SharedPreferences preferences = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        profileId = preferences.getString("profileid", "none");
+
+        userInformation();
+        followersReference();
+
+        if (firebaseUser.getUid().equals(firebaseUser.getUid())){
+            binding.followButton.setVisibility(View.GONE);
+        } else {
+            followControl();
+        }
+
+
+        binding.followButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buttonFollow = binding.followButton.getText().toString();
+
+                if (buttonFollow.equals("Takip Et")){
+
+                    FirebaseDatabase.getInstance().getReference().child("follow").child(firebaseUser.getUid())
+                            .child("following").child(profileId).setValue(true);
+                    FirebaseDatabase.getInstance().getReference().child("follow").child(firebaseUser.getUid())
+                            .child("followers").child(firebaseUser.getUid()).setValue(true);
+
+                }else if (buttonFollow.equals("Takip Ediliyor")){
+
+                    FirebaseDatabase.getInstance().getReference().child("follow").child(firebaseUser.getUid())
+                            .child("following").child(profileId).removeValue();
+                    FirebaseDatabase.getInstance().getReference().child("follow").child(firebaseUser.getUid())
+                            .child("followers").child(firebaseUser.getUid()).removeValue();
+
+                }
+            }
+        });
+
+
+        return binding.getRoot();
     }
 
     @Override
@@ -54,7 +102,9 @@ public class FragmentProfile extends Fragment {
         super.onActivityCreated(savedInstanceState);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.application_name);
 
-        userProfileInformation();
+        //userProfileInformation();
+
+
     }
 
     @Override
@@ -110,5 +160,94 @@ public class FragmentProfile extends Fragment {
                 }
             }
         };
+    }
+
+    private void userInformation(){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (getContext() == null){
+                    return;
+                }
+
+                Users user = dataSnapshot.getValue(Users.class);
+                Glide.with(getContext()).load(user.getProfilePhoto()).into(binding.userProfileImage);
+                binding.fullName.setText(user.getFullName());
+                binding.about.setText(user.getAbout());
+
+                /*Users user = new Users();
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                String profilephoto = preferences.getString("profilephoto",user.profilePhoto);
+                String fullname = preferences.getString("fullname",user.fullName);
+                String about = preferences.getString("about",user.about);
+
+
+                Glide.with(getContext()).load(profilephoto).into(binding.userProfileImage);
+                binding.fullName.setText(fullname);
+                binding.about.setText(about);*/
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void followControl(){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("follow").child(firebaseUser.getUid()).child("following");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Users user = new Users();
+
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                String userid = preferences.getString("userid",user.getUserId());
+
+                if (dataSnapshot.child(userid).exists()){
+                    binding.followButton.setText("Takip Ediliyor");
+                    binding.followButton.setVisibility(View.VISIBLE);
+                } else {
+                    binding.followButton.setText("Takip Et");
+                    binding.followButton.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void followersReference(){
+        DatabaseReference followerReference = FirebaseDatabase.getInstance().getReference().child("follow").child(firebaseUser.getUid()).child("followers");
+        followerReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                binding.followerNumber.setText("" + dataSnapshot.getChildrenCount());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        DatabaseReference followingReference = FirebaseDatabase.getInstance().getReference().child("follow").child(firebaseUser.getUid()).child("following");
+        followingReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                binding.followNumber.setText("" + dataSnapshot.getChildrenCount());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 }

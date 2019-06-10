@@ -50,6 +50,8 @@ public class FragmentHome extends Fragment {
 
         userPost();
 
+
+
         return binding.getRoot();
     }
 
