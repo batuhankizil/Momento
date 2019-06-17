@@ -133,7 +133,6 @@ public class FragmentComments extends Fragment {
     }
 
     private void addComment(){
-
         Post post = new Post();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String postId = preferences.getString("postId",post.postId);
