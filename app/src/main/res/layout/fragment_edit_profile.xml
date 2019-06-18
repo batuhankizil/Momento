@@ -1,7 +1,5 @@
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
 
 
     <RelativeLayout
@@ -23,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/sign_in_title"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:background="@color/colorWhite"
             android:orientation="vertical">
 
@@ -36,14 +34,31 @@
                 android:text="@string/set_up_profile_explanation"
                 android:textSize="12sp" />
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_profile_photoo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/icon_notification" />
+
+            <TextView
+                android:id="@+id/change_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fotoğrafı Değiştir"
+                android:textColor="@color/gradient_start"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"/>
+
             <EditText
                 android:id="@+id/edit_full_name"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/background_edittext_border"
                 android:hint="@string/firstname_lastname"
                 android:paddingStart="10dp"
@@ -56,9 +71,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/background_edittext_border"
                 android:hint="@string/birthday_date"
                 android:paddingStart="10dp"
@@ -70,9 +85,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/background_edittext_border"
                 android:hint="Cinsiyet"
                 android:paddingStart="10dp"
@@ -84,9 +99,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/background_edittext_border"
                 android:hint="@string/about"
                 android:paddingStart="10dp"
@@ -94,12 +109,13 @@
                 android:textSize="12sp" />
 
             <Button
+                android:id="@+id/save_button"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/background_gradient_button"
                 android:text="@string/save"
                 android:textAllCaps="false"

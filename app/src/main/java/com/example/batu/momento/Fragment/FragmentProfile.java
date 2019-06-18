@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.batu.momento.Adapter.PhotoAdapter;
 import com.example.batu.momento.CommunicationInterface;
+import com.example.batu.momento.Model.Post;
 import com.example.batu.momento.Model.Users;
 import com.example.batu.momento.R;
 import com.example.batu.momento.databinding.FragmentProfileBinding;
@@ -30,6 +32,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class FragmentProfile extends Fragment {
 
@@ -41,6 +50,10 @@ public class FragmentProfile extends Fragment {
 
     private FirebaseUser firebaseUser;
     String profileId;
+
+    RecyclerView postPhotoRecycler;
+    PhotoAdapter photoAdapter;
+    List<Post> postList;
 
     @Override
     public void onStart() {
@@ -60,8 +73,17 @@ public class FragmentProfile extends Fragment {
         SharedPreferences preferences = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
         profileId = preferences.getString("profileid", "none");
 
+        postPhotoRecycler = binding.postPhotos;
+        postPhotoRecycler.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new GridLayoutManager(getContext(),3);
+        postPhotoRecycler.setLayoutManager(linearLayoutManager);
+        postList = new ArrayList<>();
+        photoAdapter = new PhotoAdapter(getContext(),postList);
+        postPhotoRecycler.setAdapter(photoAdapter);
+
         userInformation();
         followersReference();
+        photos();
 
         if (firebaseUser.getUid().equals(firebaseUser.getUid())){
             binding.followButton.setVisibility(View.GONE);
@@ -249,5 +271,31 @@ public class FragmentProfile extends Fragment {
             }
         });
 
+    }
+
+    private void photos(){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("posts");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                postList.clear();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Post post = snapshot.getValue(Post.class);
+
+                    if (post.getPostSender().equals(firebaseUser.getUid())){
+                        postList.add(post);
+                    }
+                }
+
+                Collections.reverse(postList);
+                photoAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
